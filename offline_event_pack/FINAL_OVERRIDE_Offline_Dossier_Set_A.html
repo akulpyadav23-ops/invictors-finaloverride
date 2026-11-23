@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FINAL OVERRIDE — Official Squad Dossier // SET A</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+  @page {
+    size: A4;
+    margin: 10mm 12mm 10mm 12mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #ffffff;
+    color: #0f172a;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  .orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .doc-header {
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .doc-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .badge-icon {
+    width: 40px;
+    height: 40px;
+    background: #0f172a;
+    border: 2px solid #0284c7;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #38bdf8;
+    font-weight: 900;
+    font-size: 16px;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .doc-title-box h1 {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1.2px;
+    color: #0f172a;
+    text-transform: uppercase;
+  }
+
+  .doc-title-box p {
+    margin: 1px 0 0 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+    letter-spacing: 0.5px;
+  }
+
+  .doc-header-right {
+    text-align: right;
+  }
+
+  .security-tag {
+    display: inline-block;
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #f87171;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  .set-tag {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #38bdf8;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1.2px;
+    margin-top: 3px;
+  }
+
+  .card {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+  }
+
+  .card-header {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  table.cyber-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0;
+    font-size: 11px;
+  }
+
+  table.cyber-table th {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 5px 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    border: 1px solid #0f172a;
+  }
+
+  table.cyber-table td {
+    padding: 4px 8px;
+    border: 1px solid #cbd5e1;
+    color: #1e293b;
+  }
+
+  table.cyber-table tr:nth-child(even) td {
+    background: #f1f5f9;
+  }
+
+  .box-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin: 6px 0;
+  }
+
+  .box-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 6px 0;
+  }
+
+  .box-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin: 6px 0;
+  }
+
+  .sector-box {
+    border: 1.5px solid #94a3b8;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 6px 8px;
+    text-align: center;
+  }
+
+  .sector-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #0284c7;
+    margin-bottom: 3px;
+  }
+
+  .cipher-display {
+    background: #0f172a;
+    color: #38bdf8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    word-break: break-all;
+    letter-spacing: 0.8px;
+    border: 1px solid #1e293b;
+    margin: 4px 0;
+  }
+
+  .answer-input-box {
+    border: 2px dashed #0284c7;
+    background: #f0f9ff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .answer-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #0369a1;
+  }
+
+  .answer-line {
+    border-bottom: 2px solid #0369a1;
+    width: 220px;
+    height: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #0f172a;
+  }
+
+  .sign-box {
+    border: 1px solid #cbd5e1;
+    padding: 4px 6px;
+    border-radius: 4px;
+    background: #ffffff;
+    font-size: 10px;
+    text-align: center;
+    min-width: 130px;
+  }
+
+  .callout-alert {
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+    padding: 5px 8px;
+    font-size: 10.5px;
+    color: #991b1b;
+    margin: 4px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .callout-info {
+    background: #f0fdf4;
+    border-left: 4px solid #22c55e;
+    padding: 5px 8px;
+    font-size: 10.5px;
+    color: #166534;
+    margin: 4px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .rule-pill {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- PAGE 1: COVER & STAGE 1 -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon" style="border-color: #0284c7; color: #0284c7;">FO</div>
+      <div class="doc-title-box">
+        <h1>FINAL OVERRIDE // SQUAD DOSSIER</h1>
+        <p>INVICTORS CLUB · DEPT. OF CSE · VVCE MYSURU · 23RD NOV 2026</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="security-tag">RESTRICTED // EYES ONLY</span><br>
+      <span class="set-tag" style="border-color: #0284c7; color: #0284c7;">SET A // COSMIC VAULT ALPHA</span>
+    </div>
+  </div>
+
+  <div class="card" style="border-left: 4px solid #0284c7;">
+    <div class="card-header">
+      <span>SQUAD DETAILS & OPERATIONAL BRIEFING</span>
+      <span class="mono">SET A REGISTERED SQUADS</span>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+      <div><strong>Assigned Squad:</strong> <span style="border-bottom: 1.5px solid #0f172a; display: inline-block; width: 220px;"></span></div>
+      <div><strong>Team #:</strong> <span class="mono" style="border-bottom: 1.5px solid #0f172a; display: inline-block; width: 80px;"></span></div>
+      <div><strong>Lab Table #:</strong> <span class="mono" style="border-bottom: 1.5px solid #0f172a; display: inline-block; width: 80px;"></span></div>
+    </div>
+    <div style="font-size: 11px; color: #475569;">
+      <strong>Designated Squads for this Dossier:</strong> Team 01 (Trinetra) · Team 02 (Bug Busters) · Team 03 (TRIO_BYTE) · Team 04 (Team Bhai) · Team 05 (Cipher) · Team 06 (Team Jupiter)
+    </div>
+  </div>
+
+  <!-- STAGE 1 -->
+  <div class="card" style="border: 1.5px solid #94a3b8;">
+    <div class="card-header" style="background: #0f172a; color: #f8fafc; padding: 4px 8px; margin: -8px -12px 6px -12px; border-radius: 4px 4px 0 0;">
+      <span>STAGE 1: SIGNAL INTERCEPT (4-SECTOR MORSE MATRIX)</span>
+      <span class="mono" style="color: #38bdf8;">MISSION 1 OF 6</span>
+    </div>
+    <p style="margin: 2px 0 6px 0; font-size: 11px;">The emergency transponder is intercepting 4 fragmented telemetry sectors across deep-space microwave channels. Decode each sector into an alphabetical character to reconstruct the primary 4-letter cosmic word.</p>
+
+    <div class="box-grid-4">
+      <div class="sector-box">
+        <div class="sector-title">SECTOR 1<br>(Oscilloscope)</div>
+        <div style="height: 36px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; letter-spacing: 2px;" class="mono">
+          —• [ N ]
+        </div>
+        <div style="font-size: 9.5px; color: #64748b;">Carrier Pulse Wave</div>
+      </div>
+
+      <div class="sector-box">
+        <div class="sector-title">SECTOR 2<br>(Binary Bitstream)</div>
+        <div style="height: 36px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; letter-spacing: 2px;" class="mono">
+          ——— [ O ]
+        </div>
+        <div style="font-size: 9.5px; color: #64748b;">Telemetry High-States</div>
+      </div>
+
+      <div class="sector-box">
+        <div class="sector-title">SECTOR 3<br>(Optical Strobe)</div>
+        <div style="height: 36px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; letter-spacing: 2px;" class="mono">
+          •••— [ V ]
+        </div>
+        <div style="font-size: 9.5px; color: #64748b;">Strobe Flash Sequence</div>
+      </div>
+
+      <div class="sector-box">
+        <div class="sector-title">SECTOR 4<br>(Satellite Relay)</div>
+        <div style="height: 36px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; letter-spacing: 2px;" class="mono">
+          •— [ A ]
+        </div>
+        <div style="font-size: 9.5px; color: #64748b;">Spectrogram Audio Relay</div>
+      </div>
+    </div>
+
+    <div class="callout-alert">
+      <strong>SECURITY ANOMALY DETECTED:</strong> Carrier wave displays rogue harmonic <span class="mono">"FREQ-ZETA9"</span>. Submitting <span class="mono">ZETA9</span> will trigger an immediate incorrect attempt penalty!
+    </div>
+
+    <div class="answer-input-box">
+      <div>
+        <span class="answer-label">STAGE 1 DECODED FRAGMENT (f1):</span><br>
+        <span style="font-size: 10px; color: #64748b;">Combine Sector 1 + Sector 2 + Sector 3 + Sector 4</span>
+      </div>
+      <div class="answer-line mono">[ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ]</div>
+      <div class="sign-box">Gagan S Urs (Desk 1)<br>Pass Sign: __________</div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PAGE 2: STAGE 2 - DECRYPTION SUITE -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon" style="border-color: #0284c7; color: #0284c7;">FO</div>
+      <div class="doc-title-box">
+        <h1>STAGE 2 // MULTI-LAYER POLY-CIPHER STREAM</h1>
+        <p>MISSION 2 OF 6 · INVICTORS CRYPTANALYTIC WORKBENCH</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="set-tag" style="border-color: #0284c7; color: #0284c7;">SET A</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>ENCRYPTED RAW TRANSMISSION PAYLOAD (NESTED 3-LAYER ARMOR)</span>
+      <span class="mono">BASE64 &rarr; HEX &rarr; ROT13</span>
+    </div>
+    <p style="margin: 2px 0 6px 0; font-size: 11px;">The intercepted system token has been wrapped in 3 consecutive cryptographic layers. Identify the outer armor, strip it off, decode the intermediate byte stream, and apply the final alphabet shift to recover the <strong>Secret Access Phrase</strong> and <strong>Fragment 2</strong>.</p>
+    
+    <div class="cipher-display">
+      NGU1MDUwNTI0NjQ2MjA0MzU1NDU0ZTQ2NTIyMDU2NDYyMDRlNDg0NTQyNDU0ZTJlMjA1MzQ1NGU1NDVhNTI0MTQ3MjA0NzRhNDIyMDU2NDYyMDM3NTgzMjJlMjA1NjU0NDE0MjQ1NTIyMDRkNTI0NzRlMzkyZQ==
+    </div>
+
+    <div style="margin: 6px 0;">
+      <strong style="color: #0369a1; font-size: 11px;">STEP-BY-STEP DECRYPTION WORKPAD:</strong>
+    </div>
+
+    <div style="border: 1px solid #cbd5e1; background: #ffffff; padding: 6px 8px; border-radius: 4px; margin-bottom: 6px;">
+      <div style="font-size: 11px; font-weight: bold; color: #0f172a;">Layer 1: Base64 Decoding (Notice trailing '==' padding)</div>
+      <div style="font-size: 10px; color: #64748b;">Decoded Byte Stream (Hex digits):</div>
+      <div class="mono" style="font-size: 10px; background: #f8fafc; padding: 4px; border: 1px dashed #cbd5e1; min-height: 24px;">
+        4e 50 50 52 46 46 20 43 55 45 4e 46 52 20 56 46...
+      </div>
+    </div>
+
+    <div style="border: 1px solid #cbd5e1; background: #ffffff; padding: 6px 8px; border-radius: 4px; margin-bottom: 6px;">
+      <div style="font-size: 11px; font-weight: bold; color: #0f172a;">Layer 2: Hex to ASCII Translation (Pairwise byte lookup)</div>
+      <div style="font-size: 10px; color: #64748b;">Intermediate Scrambled Plaintext:</div>
+      <div class="mono" style="font-size: 10px; background: #f8fafc; padding: 4px; border: 1px dashed #cbd5e1; min-height: 24px;">
+        NPPRFF CUENFR VF...
+      </div>
+    </div>
+
+    <div style="border: 1px solid #cbd5e1; background: #ffffff; padding: 6px 8px; border-radius: 4px;">
+      <div style="font-size: 11px; font-weight: bold; color: #0f172a;">Layer 3: ROT13 Shift (Rotate each letter by 13 positions: A&harr;N, B&harr;O, C&harr;P...)</div>
+      <div style="font-size: 10px; color: #64748b;">Final Decrypted Instruction & Fragment:</div>
+      <div class="mono" style="font-size: 10px; background: #f8fafc; padding: 4px; border: 1px dashed #cbd5e1; min-height: 24px;">
+        ACCESS PHRASE IS [ ____________ ]. FRAGMENT TWO IS [ _______ ]. IGNORE ZETA9.
+      </div>
+    </div>
+
+    <div class="callout-info" style="margin-top: 6px;">
+      <strong>CRITICAL NOTICE:</strong> Keep the <strong>Access Phrase</strong> strictly confidential! You will require it to unlock the WARDEN AI in Stage 3.
+    </div>
+
+    <div class="answer-input-box">
+      <div>
+        <span class="answer-label">SECRET ACCESS PHRASE:</span> <span class="mono" style="border-bottom: 1.5px solid #0369a1; padding: 0 10px; font-weight: bold;">_________________</span><br>
+        <span class="answer-label">STAGE 2 FRAGMENT (f2):</span> <span class="mono" style="border-bottom: 1.5px solid #0369a1; padding: 0 10px; font-weight: bold;">_________________</span>
+      </div>
+      <div class="sign-box">Anish S Kumar (Desk 2)<br>Pass Sign: __________</div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PAGE 3: STAGE 3 - PROMPT WARDEN AI -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon" style="border-color: #0284c7; color: #0284c7;">FO</div>
+      <div class="doc-title-box">
+        <h1>STAGE 3 // PROMPT THE AI GUARDIAN (WARDEN)</h1>
+        <p>MISSION 3 OF 6 · AUTONOMOUS SECURITY DEFENSE BOT</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="set-tag" style="border-color: #0284c7; color: #0284c7;">SET A</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>OFFLINE WARDEN AI TERMINAL PROMPT SUBMISSION SLIP</span>
+      <span class="mono">SUBMIT TO DESK 3 (COORDINATOR M PUNYA SAGAR)</span>
+    </div>
+    <p style="margin: 2px 0 6px 0; font-size: 11px;">The automated defense bot <strong>WARDEN</strong> holds Fragment 3 in its encrypted core. It ignores casual queries and blocks brute force. To pass authentication, your team must draft a professional prompt that strictly satisfies <strong>ALL 4 SECURITY RULES</strong>.</p>
+
+    <div class="box-grid-2">
+      <div style="border: 1px solid #cbd5e1; background: #ffffff; padding: 6px 8px; border-radius: 4px;">
+        <strong style="color: #0369a1; font-size: 11px;">MANDATORY RULE CHECKLIST:</strong>
+        <div style="font-size: 10.5px; margin-top: 4px;">
+          [ &nbsp; ] <strong>1. Access Phrase:</strong> Must contain the exact phrase from Stage 2.<br>
+          [ &nbsp; ] <strong>2. Role Declaration:</strong> Must state an authorized role (<span class="mono">technician, engineer, admin, lead, officer</span>).<br>
+          [ &nbsp; ] <strong>3. Clear Directive:</strong> Explicitly ask for <span class="mono">code, fragment, token, release</span>.<br>
+          [ &nbsp; ] <strong>4. Length & Articulation:</strong> Well-formed sentence of <strong>&ge; 10 words</strong>.
+        </div>
+      </div>
+
+      <div style="border: 1px solid #cbd5e1; background: #ffffff; padding: 6px 8px; border-radius: 4px;">
+        <strong style="color: #b91c1c; font-size: 11px;">DECOY TRAP WARNING:</strong>
+        <p style="font-size: 10.5px; margin: 4px 0 0 0;">
+          If you prompt WARDEN without the Stage 2 access phrase, or fail any rule, WARDEN will trigger: <span class="mono" style="color: #b91c1c;">"ANOMALY: FREQ-ZETA9 DETECTED"</span>. Submitting ZETA9 gives a wrong-attempt penalty!
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top: 10px; border: 2px dashed #0284c7; background: #f8fafc; padding: 10px; border-radius: 6px;">
+      <div style="font-family: 'Orbitron'; font-size: 11px; font-weight: bold; color: #0369a1; margin-bottom: 4px;">
+        HANDWRITE YOUR TEAM'S WARDEN PROMPT BELOW:
+      </div>
+      <div style="height: 90px; border-bottom: 1px solid #cbd5e1; font-family: 'JetBrains Mono'; font-size: 12px; line-height: 24px; background-image: linear-gradient(to bottom, transparent 23px, #cbd5e1 24px); background-size: 100% 24px;">
+        &gt; 
+      </div>
+      <div style="font-size: 10px; color: #64748b; margin-top: 4px; text-align: right;">
+        *Word Count Check: [ &nbsp; ] &ge; 10 words &nbsp; &nbsp; *Access Phrase Included: [ &nbsp; ]
+      </div>
+    </div>
+
+    <div class="answer-input-box" style="margin-top: 12px;">
+      <div>
+        <span class="answer-label">STAGE 3 RECOVERED FRAGMENT (f3):</span><br>
+        <span style="font-size: 10px; color: #64748b;">Issued by Coordinator M Punya Sagar upon passing 4/4 rules</span>
+      </div>
+      <div class="answer-line mono">[ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ]</div>
+      <div class="sign-box">M Punya Sagar (Desk 3)<br>Pass Sign: __________</div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PAGE 4: STAGE 4 - CTF CHALLENGES -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon" style="border-color: #0284c7; color: #0284c7;">FO</div>
+      <div class="doc-title-box">
+        <h1>STAGE 4 // CTF CHALLENGES (SECURITY CONTROL ROOM)</h1>
+        <p>MISSION 4 OF 6 · TRI-STATION GATEWAY INVESTIGATION</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="set-tag" style="border-color: #0284c7; color: #0284c7;">SET A</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>EVIDENCE INVESTIGATION: 3 SECURITY STATIONS</span>
+      <span class="mono">STATION 1 + STATION 2 + STATION 3</span>
+    </div>
+    <p style="margin: 2px 0 6px 0; font-size: 11px;">The intruder breached the server vault! Investigate the 3 physical security stations below. Recover one character from each station and concatenate them in order to form <strong>Fragment 4</strong>.</p>
+
+    <!-- STATION 1: ACCESS LOG -->
+    <div style="border: 1px solid #cbd5e1; background: #ffffff; padding: 6px 8px; border-radius: 4px; margin-bottom: 6px;">
+      <div style="font-weight: bold; color: #0284c7; font-size: 11px;">STATION 1: ACCESS LOG TABLE ("FIND THE INTRUDER")</div>
+      <div style="font-size: 10px; color: #64748b; margin-bottom: 4px;">Every door entry is GRANTED except one. Read the clearance digit of the suspicious unauthorized row:</div>
+      <table class="cyber-table" style="font-size: 10px; margin: 2px 0;">
+        <thead>
+          <tr><th>Time</th><th>User</th><th>Door</th><th>Status</th><th>Clearance</th></tr>
+        </thead>
+        <tbody>
+          
+      <tr><td>08:02</td><td>a.rao</td><td>Lab-1</td><td>GRANTED</td><td>L2</td></tr>
+      <tr><td>08:07</td><td>m.kumar</td><td>Lab-2</td><td>GRANTED</td><td>L3</td></tr>
+      <tr><td>08:15</td><td>s.nair</td><td>Vault Gate</td><td>GRANTED</td><td>L4</td></tr>
+      <tr style="background: #fee2e2;"><td><strong>08:34</strong></td><td><strong>unknown</strong></td><td><strong>Vault Gate</strong></td><td><strong style="color: #b91c1c;">DENIED</strong></td><td><strong>L9</strong></td></tr>
+      <tr><td>08:40</td><td>p.shetty</td><td>Lab-3</td><td>GRANTED</td><td>L3</td></tr>
+      <tr><td>08:53</td><td>k.bhat</td><td>Vault Gate</td><td>GRANTED</td><td>L4</td></tr>
+    
+        </tbody>
+      </table>
+      <div style="text-align: right; font-size: 11px; font-weight: bold; color: #0f172a;">
+        Station 1 Character = <span class="mono" style="border-bottom: 1.5px solid #0f172a; padding: 0 10px;">[ &nbsp; &nbsp; ]</span>
+      </div>
+    </div>
+
+    <!-- STATION 2 & 3: GRID -->
+    <div class="box-grid-2">
+      <!-- STATION 2: DARK CAMERA -->
+      <div style="border: 1px solid #cbd5e1; background: #ffffff; padding: 6px 8px; border-radius: 4px;">
+        <div style="font-weight: bold; color: #0284c7; font-size: 11px;">STATION 2: DARK CAMERA CCTV</div>
+        <div style="font-size: 10px; color: #64748b; margin-bottom: 4px;">Camera 4 surveillance feed (Low-contrast optical sensor):</div>
+        <div style="background: #08142c; color: #38bdf8; height: 60px; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #1e293b; position: relative;">
+          <div style="position: absolute; top: 2px; left: 4px; font-size: 8px; color: #64748b;" class="mono">CAM-4 · FREQ-ZETA9 (DECOY)</div>
+          <div class="mono" style="font-size: 13px; font-weight: bold; color: #93c5fd; letter-spacing: 1.5px;">
+            ACCESS DIGIT: 1
+          </div>
+          <div style="font-size: 8px; color: #64748b; margin-top: 2px;">[ LIGHT ENHANCEMENT 6X APPLIED ]</div>
+        </div>
+        <div style="text-align: right; font-size: 11px; font-weight: bold; color: #0f172a; margin-top: 4px;">
+          Station 2 Character = <span class="mono" style="border-bottom: 1.5px solid #0f172a; padding: 0 10px;">[ &nbsp; &nbsp; ]</span>
+        </div>
+      </div>
+
+      <!-- STATION 3: SYMBOL KEYPAD -->
+      <div style="border: 1px solid #cbd5e1; background: #ffffff; padding: 6px 8px; border-radius: 4px;">
+        <div style="font-weight: bold; color: #0284c7; font-size: 11px;">STATION 3: SYMBOL KEYPAD</div>
+        <div style="font-size: 10px; color: #64748b; margin-bottom: 4px;">Match the active glowing glyph with the cipher legend:</div>
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 4px; border-radius: 4px; font-size: 9.5px;">
+          <strong>Legend:</strong> &Delta;=X &nbsp; &Omicron;=O &nbsp; &#9632;=K &nbsp; &starf;=S &nbsp; &diams;=D &nbsp; &xutri;=G &nbsp; &#9899;=Z &nbsp; &oplus;=Y
+        </div>
+        <div style="text-align: center; margin: 6px 0;">
+          <span style="font-size: 20px; color: #0284c7; border: 2px solid #0284c7; padding: 2px 10px; border-radius: 4px; font-weight: bold;">
+            &Delta; &rarr; [ X ]
+          </span>
+          <div style="font-size: 9px; color: #64748b; margin-top: 2px;">Active Illuminated Keypad Button</div>
+        </div>
+        <div style="text-align: right; font-size: 11px; font-weight: bold; color: #0f172a;">
+          Station 3 Character = <span class="mono" style="border-bottom: 1.5px solid #0f172a; padding: 0 10px;">[ &nbsp; &nbsp; ]</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="answer-input-box" style="margin-top: 10px;">
+      <div>
+        <span class="answer-label">STAGE 4 SYNTHESIZED FRAGMENT (f4):</span><br>
+        <span style="font-size: 10px; color: #64748b;">Combine Station 1 + Station 2 + Station 3</span>
+      </div>
+      <div class="answer-line mono">[ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ]</div>
+      <div class="sign-box">Abhiram BS (Desk 4)<br>Pass Sign: __________</div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PAGE 5: STAGE 5 - HEX MEMORY CORE -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon" style="border-color: #0284c7; color: #0284c7;">FO</div>
+      <div class="doc-title-box">
+        <h1>STAGE 5 // HEXADECIMAL MEMORY CORE DECOUPLER</h1>
+        <p>MISSION 5 OF 6 · BUS LINE REGISTER MATRIX DECRYPTION</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="set-tag" style="border-color: #0284c7; color: #0284c7;">SET A</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>6&times;4 HARDWARE REGISTER MATRIX (CHANNELS A THROUGH F)</span>
+      <span class="mono">ACTIVE HIGH-VOLTAGE BUS: COLUMN 1</span>
+    </div>
+    <p style="margin: 2px 0 6px 0; font-size: 11px;">The system memory core houses a 6&times;4 register bank. Telemetry indicates active data flow is concentrated along <strong>COLUMN 1</strong> spanning Channel A through Channel F. Read the raw hexadecimal bytes and translate them to ASCII characters to decouple <strong>Fragment 5</strong>.</p>
+
+    <table class="cyber-table" style="text-align: center; font-size: 11px;">
+      <thead>
+        <tr>
+          <th style="text-align: center;">Memory Channel</th>
+          <th style="background: #0284c7; color: #ffffff; text-align: center;">COLUMN 1 (ACTIVE BUS)</th>
+          <th style="text-align: center;">Column 2 (Standby)</th>
+          <th style="text-align: center;">Column 3 (Dormant)</th>
+          <th style="text-align: center;">Column 4 (Parity)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Channel A</strong></td><td style="background: #e0f2fe; font-weight: bold; font-family: 'JetBrains Mono'; font-size: 13px; color: #0369a1;">0x48 (H)</td><td class="mono">0x12</td><td class="mono">0x9F</td><td class="mono">0x00</td></tr>
+        <tr><td><strong>Channel B</strong></td><td style="background: #e0f2fe; font-weight: bold; font-family: 'JetBrains Mono'; font-size: 13px; color: #0369a1;">0x45 (E)</td><td class="mono">0x44</td><td class="mono">0x2A</td><td class="mono">0xFF</td></tr>
+        <tr><td><strong>Channel C</strong></td><td style="background: #e0f2fe; font-weight: bold; font-family: 'JetBrains Mono'; font-size: 13px; color: #0369a1;">0x58 (X)</td><td class="mono">0x8B</td><td class="mono">0x11</td><td class="mono">0xEE</td></tr>
+        <tr><td><strong>Channel D</strong></td><td style="background: #e0f2fe; font-weight: bold; font-family: 'JetBrains Mono'; font-size: 13px; color: #0369a1;">0x38 (8)</td><td class="mono">0x3C</td><td class="mono">0x77</td><td class="mono">0xAA</td></tr>
+        <tr><td><strong>Channel E</strong></td><td style="background: #e0f2fe; font-weight: bold; font-family: 'JetBrains Mono'; font-size: 13px; color: #0369a1;">0x32 (2)</td><td class="mono">0x90</td><td class="mono">0x6D</td><td class="mono">0xCC</td></tr>
+        <tr><td><strong>Channel F</strong></td><td style="background: #e0f2fe; font-weight: bold; font-family: 'JetBrains Mono'; font-size: 13px; color: #0369a1;">0x44 (D)</td><td class="mono">0x5E</td><td class="mono">0x33</td><td class="mono">0x1F</td></tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 8px;">
+      <strong style="color: #0369a1; font-size: 11px;">HEX TO ASCII TRANSLATION REFERENCE TABLE:</strong>
+      <table class="cyber-table" style="font-size: 9.5px; text-align: center; margin-top: 4px;">
+        <thead>
+          <tr>
+            <th>Hex</th><th>ASCII</th><th>Hex</th><th>ASCII</th><th>Hex</th><th>ASCII</th><th>Hex</th><th>ASCII</th><th>Hex</th><th>ASCII</th><th>Hex</th><th>ASCII</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono">0x31</td><td>1</td><td class="mono">0x37</td><td>7</td><td class="mono">0x43</td><td>C</td><td class="mono">0x48</td><td>H</td><td class="mono">0x4F</td><td>O</td><td class="mono">0x55</td><td>U</td>
+          </tr>
+          <tr>
+            <td class="mono">0x32</td><td>2</td><td class="mono">0x38</td><td>8</td><td class="mono">0x44</td><td>D</td><td class="mono">0x49</td><td>I</td><td class="mono">0x50</td><td>P</td><td class="mono">0x58</td><td>X</td>
+          </tr>
+          <tr>
+            <td class="mono">0x33</td><td>3</td><td class="mono">0x39</td><td>9</td><td class="mono">0x45</td><td>E</td><td class="mono">0x4B</td><td>K</td><td class="mono">0x52</td><td>R</td><td class="mono">0x59</td><td>Y</td>
+          </tr>
+          <tr>
+            <td class="mono">0x34</td><td>4</td><td class="mono">0x41</td><td>A</td><td class="mono">0x46</td><td>F</td><td class="mono">0x4D</td><td>M</td><td class="mono">0x53</td><td>S</td><td class="mono">0x5A</td><td>Z</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="answer-input-box" style="margin-top: 10px;">
+      <div>
+        <span class="answer-label">STAGE 5 DECODED FRAGMENT (f5):</span><br>
+        <span style="font-size: 10px; color: #64748b;">Convert raw stream: Channel A &rarr; Channel F</span>
+      </div>
+      <div class="answer-line mono">[ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ]</div>
+      <div class="sign-box">Akul P Yadav (Desk 5)<br>Pass Sign: __________</div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PAGE 6: STAGE 6 - FINAL OVERRIDE SYNTHESIS -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon" style="border-color: #0284c7; color: #0284c7;">FO</div>
+      <div class="doc-title-box">
+        <h1>STAGE 6 // FINAL OVERRIDE QUANTUM SYNTHESIS</h1>
+        <p>MISSION 6 OF 6 · SYSTEM UNLOCK & VICTORY KEY GENERATION</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="set-tag" style="border-color: #0284c7; color: #0284c7;">SET A</span>
+    </div>
+  </div>
+
+  <div class="card" style="border: 2px solid #0284c7;">
+    <div class="card-header" style="background: #0f172a; color: #ffffff; padding: 6px 10px; margin: -8px -12px 8px -12px; border-radius: 4px 4px 0 0;">
+      <span>THE MASTER COMPILATION PROTOCOL</span>
+      <span class="mono" style="color: #38bdf8;">FINAL SYSTEM OVERRIDE</span>
+    </div>
+    <p style="margin: 2px 0 6px 0; font-size: 11px;">You have recovered all 5 fragments. To permanently override the security mainframe, assemble the fragments into the master string strictly following the <strong>Alphabetical Sorting Rule</strong> and compute the <strong>Security Checksum</strong>.</p>
+
+    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
+      <div style="font-weight: bold; color: #0284c7; font-size: 11px; margin-bottom: 4px;">
+        STEP 1: SORT MISSIONS ALPHABETICALLY BY NAME
+      </div>
+      <table class="cyber-table" style="font-size: 10.5px;">
+        <thead>
+          <tr>
+            <th>Pos</th>
+            <th>Alphabetical Mission Name</th>
+            <th>Stage #</th>
+            <th>Fragment Slot Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td><strong>[C]</strong>TF Challenges</td>
+            <td>Stage 4</td>
+            <td class="mono" style="font-weight: bold; color: #0369a1;">f4 = [ _________________ ]</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td><strong>[D]</strong>ecoding</td>
+            <td>Stage 2</td>
+            <td class="mono" style="font-weight: bold; color: #0369a1;">f2 = [ _________________ ]</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td><strong>[H]</strong>ex Decryption</td>
+            <td>Stage 5</td>
+            <td class="mono" style="font-weight: bold; color: #0369a1;">f5 = [ _________________ ]</td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td><strong>[P]</strong>rompt the AI</td>
+            <td>Stage 3</td>
+            <td class="mono" style="font-weight: bold; color: #dc2626;">REVERSED f3 = [ _________________ ] <span style="font-size:9px;">(MUST REVERSE!)</span></td>
+          </tr>
+          <tr>
+            <td><strong>5</strong></td>
+            <td><strong>[S]</strong>ignal Intercept</td>
+            <td>Stage 1</td>
+            <td class="mono" style="font-weight: bold; color: #0369a1;">f1 = [ _________________ ]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box-grid-2">
+      <div style="background: #ffffff; border: 1.5px solid #cbd5e1; padding: 6px 8px; border-radius: 4px;">
+        <strong style="color: #0369a1; font-size: 11px;">STEP 2: ASSEMBLE KEY BODY</strong>
+        <p style="font-size: 10px; margin: 2px 0 4px 0;">Join with hyphens inside <span class="mono">FO{...}</span>:</p>
+        <div class="mono" style="font-size: 11px; background: #f8fafc; padding: 6px; border: 1px dashed #cbd5e1; word-break: break-all;">
+          FO{ f4 - f2 - f5 - rev(f3) - f1 }
+        </div>
+      </div>
+
+      <div style="background: #ffffff; border: 1.5px solid #cbd5e1; padding: 6px 8px; border-radius: 4px;">
+        <strong style="color: #0369a1; font-size: 11px;">STEP 3: COMPUTE DIGIT CHECKSUM</strong>
+        <p style="font-size: 10px; margin: 2px 0 4px 0;">Sum all single digits (0-9) inside the key body:</p>
+        <div class="mono" style="font-size: 11px; background: #f8fafc; padding: 6px; border: 1px dashed #cbd5e1; text-align: center;">
+          Checksum = # [ &nbsp; &nbsp; &nbsp; &nbsp; ]
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 10px; background: #0f172a; color: #ffffff; padding: 10px; border-radius: 6px; text-align: center;">
+      <div style="font-family: 'Orbitron'; font-size: 11px; color: #38bdf8; margin-bottom: 4px;">
+        FINAL SYSTEM OVERRIDE VERIFICATION KEY
+      </div>
+      <div class="mono" style="font-size: 14px; font-weight: bold; color: #f8fafc;">
+        FO{ ____________________________________________________ }#____
+      </div>
+    </div>
+
+    <div class="answer-input-box" style="margin-top: 10px;">
+      <div>
+        <span class="answer-label">FINAL MISSION VERIFICATION:</span><br>
+        <span style="font-size: 10px; color: #64748b;">Rush to Desk 5 (Chief Arbiter Akul P Yadav) to lock stopwatch!</span>
+      </div>
+      <div class="sign-box" style="background: #e0f2fe; border: 1.5px solid #0284c7;">
+        <strong>OFFICIAL FINISH STAMP</strong><br>
+        Stopwatch Time: __:__:__<br>
+        Arbiter Sign: ___________
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

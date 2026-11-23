@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FINAL OVERRIDE — Master Event Manager & Coordinator Offline Operational Manual</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+  @page {
+    size: A4;
+    margin: 10mm 12mm 10mm 12mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #ffffff;
+    color: #0f172a;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  .orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .doc-header {
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .doc-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .badge-icon {
+    width: 40px;
+    height: 40px;
+    background: #0f172a;
+    border: 2px solid #0284c7;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #38bdf8;
+    font-weight: 900;
+    font-size: 16px;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .doc-title-box h1 {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1.2px;
+    color: #0f172a;
+    text-transform: uppercase;
+  }
+
+  .doc-title-box p {
+    margin: 1px 0 0 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+    letter-spacing: 0.5px;
+  }
+
+  .doc-header-right {
+    text-align: right;
+  }
+
+  .security-tag {
+    display: inline-block;
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #f87171;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  .set-tag {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #38bdf8;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1.2px;
+    margin-top: 3px;
+  }
+
+  .card {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+  }
+
+  .card-header {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  table.cyber-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0;
+    font-size: 11px;
+  }
+
+  table.cyber-table th {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 5px 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    border: 1px solid #0f172a;
+  }
+
+  table.cyber-table td {
+    padding: 4px 8px;
+    border: 1px solid #cbd5e1;
+    color: #1e293b;
+  }
+
+  table.cyber-table tr:nth-child(even) td {
+    background: #f1f5f9;
+  }
+
+  .box-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin: 6px 0;
+  }
+
+  .box-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 6px 0;
+  }
+
+  .box-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin: 6px 0;
+  }
+
+  .sector-box {
+    border: 1.5px solid #94a3b8;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 6px 8px;
+    text-align: center;
+  }
+
+  .sector-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #0284c7;
+    margin-bottom: 3px;
+  }
+
+  .cipher-display {
+    background: #0f172a;
+    color: #38bdf8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    word-break: break-all;
+    letter-spacing: 0.8px;
+    border: 1px solid #1e293b;
+    margin: 4px 0;
+  }
+
+  .answer-input-box {
+    border: 2px dashed #0284c7;
+    background: #f0f9ff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .answer-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #0369a1;
+  }
+
+  .answer-line {
+    border-bottom: 2px solid #0369a1;
+    width: 220px;
+    height: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #0f172a;
+  }
+
+  .sign-box {
+    border: 1px solid #cbd5e1;
+    padding: 4px 6px;
+    border-radius: 4px;
+    background: #ffffff;
+    font-size: 10px;
+    text-align: center;
+    min-width: 130px;
+  }
+
+  .callout-alert {
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+    padding: 5px 8px;
+    font-size: 10.5px;
+    color: #991b1b;
+    margin: 4px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .callout-info {
+    background: #f0fdf4;
+    border-left: 4px solid #22c55e;
+    padding: 5px 8px;
+    font-size: 10.5px;
+    color: #166534;
+    margin: 4px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .rule-pill {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- PAGE 1: EXECUTIVE PROTOCOL & VENUE ARCHITECTURE -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon">FO</div>
+      <div class="doc-title-box">
+        <h1>FINAL OVERRIDE // MASTER OFFLINE MANUAL</h1>
+        <p>INVICTORS CLUB · DEPT. OF CSE · VIDYAVARDHAKA COLLEGE OF ENGINEERING</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="security-tag">OFFICIAL ORGANISER PROTOCOL</span><br>
+      <span class="set-tag">VENUE: M BLOCK 401 | 23 SQUADS</span>
+    </div>
+  </div>
+
+  <div class="card" style="border-left: 4px solid #0284c7;">
+    <div class="card-header">
+      <span>1. EMERGENCY OFFLINE PIVOT PROTOCOL (DISASTER RECOVERY)</span>
+      <span class="mono" style="color: #0369a1;">EXECUTION TIME: &lt; 3 MINUTES</span>
+    </div>
+    <p style="margin: 2px 0 6px 0;">This manual governs the complete offline execution of FINAL OVERRIDE if cloud connectivity, campus Wi-Fi, or local server infrastructure fails. The entire gameplay, cryptographic logic, hints, and scoring are 100% playable with pen, paper, and physical coordinator verification desks.</p>
+    <div class="box-grid-2">
+      <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 6px 8px; border-radius: 4px;">
+        <strong style="color: #0f172a;">🚨 Pivot Trigger Criteria:</strong>
+        <ul style="margin: 4px 0 0 16px; padding: 0; font-size: 11px;">
+          <li>Campus LAN/Wi-Fi down for &gt; 3 continuous minutes.</li>
+          <li>Power dip causing workstation reboots.</li>
+          <li>Cloud database / Vercel endpoint rate-limit lock.</li>
+        </ul>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 6px 8px; border-radius: 4px;">
+        <strong style="color: #0f172a;">⚡ 3-Minute Pivot Action Plan:</strong>
+        <ol style="margin: 4px 0 0 16px; padding: 0; font-size: 11px;">
+          <li><strong>Event Lead:</strong> Call "PIVOT OFFLINE" over M Block 401 PA system.</li>
+          <li><strong>Master Timer:</strong> Start central projector stopwatch (or coordinator phone timer synced at 00:00).</li>
+          <li><strong>Handouts:</strong> Distribute Squad Dossiers (Sets A–D) & Mission Passports.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>2. VENUE LAYOUT & COORDINATOR DESK ARCHITECTURE (M BLOCK 401)</span>
+      <span class="mono">5 COORDINATOR STATIONS</span>
+    </div>
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Station / Desk</th>
+          <th>Lead Coordinator</th>
+          <th>PIN / Authorization</th>
+          <th>Primary Responsibilities</th>
+          <th>Validation Artifact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Desk 1: Signal Intercept</strong></td>
+          <td><strong>Gagan S Urs</strong><br><span style="font-size: 9.5px; color: #64748b;">(Assisted by Tanu)</span></td>
+          <td><span class="mono">GAGAN#101</span></td>
+          <td>Validate Stage 1 Morse words; Hand out Stage 2 cipher envelopes; Record Stage 1 clear time.</td>
+          <td>Stage 1 Stamp / Signature on Passport</td>
+        </tr>
+        <tr>
+          <td><strong>Desk 2: Cryptanalyst Hub</strong></td>
+          <td><strong>Anish S Kumar</strong><br><span style="font-size: 9.5px; color: #64748b;">(Assisted by Chandrashekar)</span></td>
+          <td><span class="mono">ANISH#202</span></td>
+          <td>Verify 3-step decoding (Base64 &rarr; Hex &rarr; ROT13); Verify Access Phrase; Issue Hint 1/2.</td>
+          <td>Stage 2 Stamp & Fragment 2 (<span class="mono">7K2 / 4M9 / 3X8 / 5P3</span>)</td>
+        </tr>
+        <tr>
+          <td><strong>Desk 3: WARDEN AI Terminal</strong></td>
+          <td><strong>M Punya Sagar</strong><br><span style="font-size: 9.5px; color: #64748b;">(Assisted by MN Shashank)</span></td>
+          <td><span class="mono">PUNYA#303</span></td>
+          <td><strong>"Human AI Bot"</strong>: Review physical prompt slips against 4 rules; Issue Fragment 3 or Decoy ZETA9.</td>
+          <td>Official Fragment 3 Physical Token Card</td>
+        </tr>
+        <tr>
+          <td><strong>Desk 4: CTF Control Room</strong></td>
+          <td><strong>Abhiram BS</strong><br><span style="font-size: 9.5px; color: #64748b;">(Assisted by Dhanush KP)</span></td>
+          <td><span class="mono">ABHIRAM#404</span></td>
+          <td>Validate 3 CTF evidence stations (Door log digit, Camera digit, Audio glyph symbol).</td>
+          <td>Stage 4 Clearance Stamp (<span class="mono">91X / 84Z / 72Y / 63K</span>)</td>
+        </tr>
+        <tr>
+          <td><strong>Desk 5: Memory Core & Final Key</strong></td>
+          <td><strong>Akul P Yadav</strong><br><span style="font-size: 9.5px; color: #64748b;">(Chief Arbiter & Ayush P)</span></td>
+          <td><span class="mono">AKUL#2026</span></td>
+          <td>Validate Stage 5 Hex ASCII bus line; Verify Stage 6 Master Synthesis, Checksum, and final time.</td>
+          <td>Victory Seal, Stopwatch Lock, Rank Stamp</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>3. TIMING BENCHMARKS & PENALTY CALCULATION</span>
+      <span class="mono">90-MINUTE HARD CAP</span>
+    </div>
+    <div class="box-grid-3">
+      <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 6px; border-radius: 4px; text-align: center;">
+        <div style="font-size: 11px; font-weight: bold; color: #0284c7;">SPEEDRUN SQUADS</div>
+        <div style="font-size: 16px; font-weight: 900; font-family: 'Orbitron';">45 - 55 MINS</div>
+        <div style="font-size: 10px; color: #64748b;">Top 10% competitive tier</div>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 6px; border-radius: 4px; text-align: center;">
+        <div style="font-size: 11px; font-weight: bold; color: #059669;">AVERAGE COMPLETION</div>
+        <div style="font-size: 16px; font-weight: 900; font-family: 'Orbitron';">65 - 75 MINS</div>
+        <div style="font-size: 10px; color: #64748b;">Standard expected pace</div>
+      </div>
+      <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 6px; border-radius: 4px; text-align: center;">
+        <div style="font-size: 11px; font-weight: bold; color: #dc2626;">HARD GAME OVER</div>
+        <div style="font-size: 16px; font-weight: 900; font-family: 'Orbitron';">90 MINS CAP</div>
+        <div style="font-size: 10px; color: #64748b;">All submissions freeze</div>
+      </div>
+    </div>
+    <div class="callout-alert" style="margin-top: 6px;">
+      <strong>Official Rank Formula:</strong> <span class="mono">Final Adjusted Time = Elapsed Stopwatch Time + Total Hint Penalties (+3m / +5m) + Attempt Penalties (&gt;5 wrong attempts: +1 min each)</span>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PAGE 2: MASTER ANSWER KEYS & VERIFICATION SHEET -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon">FO</div>
+      <div class="doc-title-box">
+        <h1>MASTER ANSWER KEYS // ALL 4 SETS</h1>
+        <p>COORDINATOR CONFIDENTIAL REFERENCE SHEET · NEVER SHOW TO SQUADS</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="security-tag">STRICTLY CONFIDENTIAL</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>SIDE-BY-SIDE VERIFICATION MATRIX (SETS A, B, C, D)</span>
+      <span class="mono">ACCURATE & DEDUPLICATED</span>
+    </div>
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th style="width: 14%;">Stage</th>
+          <th style="width: 21.5%;">Set A (Cosmic Vault Alpha)</th>
+          <th style="width: 21.5%;">Set B (Cyber Nexus Beta)</th>
+          <th style="width: 21.5%;">Set C (Quantum Matrix Gamma)</th>
+          <th style="width: 21.5%;">Set D (Hyperion Vector Delta)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Stage 1<br>(Signal Intercept)</strong></td>
+          <td><strong>NOVA</strong><br><span class="mono" style="font-size: 9.5px;">S1:—• S2:——— S3:•••— S4:•—</span></td>
+          <td><strong>LUNA</strong><br><span class="mono" style="font-size: 9.5px;">S1:•—•• S2:••— S3:—• S4:•—</span></td>
+          <td><strong>VEGA</strong><br><span class="mono" style="font-size: 9.5px;">S1:•••— S2:• S3:——• S4:•—</span></td>
+          <td><strong>MARS</strong><br><span class="mono" style="font-size: 9.5px;">S1:—— S2:•— S3:•—• S4:•••</span></td>
+        </tr>
+        <tr>
+          <td><strong>Stage 2<br>(Decryption Suite)</strong></td>
+          <td>Phrase: <strong>AURORA</strong><br>Fragment 2: <strong>7K2</strong><br><span style="font-size: 9px; color:#64748b;">(B64 &rarr; Hex &rarr; ROT13)</span></td>
+          <td>Phrase: <strong>CYPHER</strong><br>Fragment 2: <strong>4M9</strong><br><span style="font-size: 9px; color:#64748b;">(B64 &rarr; Hex &rarr; ROT13)</span></td>
+          <td>Phrase: <strong>VORTEX</strong><br>Fragment 2: <strong>3X8</strong><br><span style="font-size: 9px; color:#64748b;">(B64 &rarr; Hex &rarr; ROT13)</span></td>
+          <td>Phrase: <strong>NEBULA</strong><br>Fragment 2: <strong>5P3</strong><br><span style="font-size: 9px; color:#64748b;">(B64 &rarr; Hex &rarr; ROT13)</span></td>
+        </tr>
+        <tr>
+          <td><strong>Stage 3<br>(WARDEN AI)</strong></td>
+          <td>Fragment 3: <strong>ORBIT</strong><br><span style="font-size: 9px; color:#64748b;">Must include: AURORA + Role</span></td>
+          <td>Fragment 3: <strong>SOLAR</strong><br><span style="font-size: 9px; color:#64748b;">Must include: CYPHER + Role</span></td>
+          <td>Fragment 3: <strong>TITAN</strong><br><span style="font-size: 9px; color:#64748b;">Must include: VORTEX + Role</span></td>
+          <td>Fragment 3: <strong>ZENITH</strong><br><span style="font-size: 9px; color:#64748b;">Must include: NEBULA + Role</span></td>
+        </tr>
+        <tr>
+          <td><strong>Stage 4<br>(CTF Stations)</strong></td>
+          <td>Fragment 4: <strong>91X</strong><br><span style="font-size: 9.5px;">Log: 9 | Cam: 1 | Keypad: X</span></td>
+          <td>Fragment 4: <strong>84Z</strong><br><span style="font-size: 9.5px;">Log: 8 | Cam: 4 | Keypad: Z</span></td>
+          <td>Fragment 4: <strong>72Y</strong><br><span style="font-size: 9.5px;">Log: 7 | Cam: 2 | Keypad: Y</span></td>
+          <td>Fragment 4: <strong>63K</strong><br><span style="font-size: 9.5px;">Log: 6 | Cam: 3 | Keypad: K</span></td>
+        </tr>
+        <tr>
+          <td><strong>Stage 5<br>(Hex Memory Core)</strong></td>
+          <td>Fragment 5: <strong>HEX82D</strong><br><span class="mono" style="font-size: 9px;">48 45 58 38 32 44</span></td>
+          <td>Fragment 5: <strong>CORE7F</strong><br><span class="mono" style="font-size: 9px;">43 4f 52 45 37 46</span></td>
+          <td>Fragment 5: <strong>BYTE9A</strong><br><span class="mono" style="font-size: 9px;">42 59 54 45 39 41</span></td>
+          <td>Fragment 5: <strong>BITS1E</strong><br><span class="mono" style="font-size: 9px;">42 49 54 53 31 45</span></td>
+        </tr>
+        <tr>
+          <td><strong>Stage 6<br>(Master Synthesis)</strong></td>
+          <td><span class="mono" style="font-size: 10px; font-weight: bold; color: #0284c7;">FO{91X-7K2-HEX82D-TIBRO-NOVA}#29</span><br><span style="font-size: 9px;">Digits: 9+1+7+2+8+2 = 29</span></td>
+          <td><span class="mono" style="font-size: 10px; font-weight: bold; color: #0284c7;">FO{84Z-4M9-CORE7F-RALOS-LUNA}#32</span><br><span style="font-size: 9px;">Digits: 8+4+4+9+7 = 32</span></td>
+          <td><span class="mono" style="font-size: 10px; font-weight: bold; color: #0284c7;">FO{72Y-3X8-BYTE9A-NATIT-VEGA}#29</span><br><span style="font-size: 9px;">Digits: 7+2+3+8+9 = 29</span></td>
+          <td><span class="mono" style="font-size: 10px; font-weight: bold; color: #0284c7;">FO{63K-5P3-BITS1E-HTINEZ-MARS}#18</span><br><span style="font-size: 9px;">Digits: 6+3+5+3+1 = 18</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>STAGE 6 ALPHABETICAL ORDERING RULE (CRUCIAL EXPLANATION)</span>
+    </div>
+    <p style="margin: 2px 0 4px 0; font-size: 11px;">Fragments must be joined strictly in alphabetical order of the <strong>MISSION NAME</strong>, not by stage number:</p>
+    <div class="box-grid-2">
+      <ol style="margin: 0 0 0 18px; padding: 0; font-size: 11px;">
+        <li><strong>C</strong>TF Challenges &rarr; <span class="mono">Fragment 4</span></li>
+        <li><strong>D</strong>ecoding &rarr; <span class="mono">Fragment 2</span></li>
+        <li><strong>H</strong>ex Decryption &rarr; <span class="mono">Fragment 5</span></li>
+        <li><strong>P</strong>rompt the AI &rarr; <span class="mono">Fragment 3 (REVERSED!)</span></li>
+        <li><strong>S</strong>ignal Intercept &rarr; <span class="mono">Fragment 1</span></li>
+      </ol>
+      <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 6px 8px; border-radius: 4px;">
+        <strong style="color: #0369a1;">Checksum Formula:</strong> Sum of all numerical digits (0–9) appearing in the key string. <em>Letters are ignored.</em><br>
+        <strong>Decoy Rejection:</strong> Submitting code containing <span class="mono">ZETA9</span> or unreversed AI fragment triggers immediate disqualification of that attempt!
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PAGE 3: 100-POINT SCORING RUBRIC & WARDEN AI GUIDE -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon">FO</div>
+      <div class="doc-title-box">
+        <h1>100-POINT SCORING RUBRIC & AI OPERATIONAL GUIDE</h1>
+        <p>OFFICIAL GRADING MATRIX AND HUMAN WARDEN EVALUATION PROTOCOL</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="security-tag">SCORING RUBRIC</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>OFFICIAL 100-POINT STAGE-BY-STAGE RUBRIC (APPLIES TO ALL SETS)</span>
+      <span class="mono">MAX 100 PTS</span>
+    </div>
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Stage</th>
+          <th>Max Pts</th>
+          <th>Sub-Item Scoring Breakdown</th>
+          <th>Coordinator Verification Criteria</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Stage 1: Signal Intercept</strong></td>
+          <td><strong>10 pts</strong></td>
+          <td>• 2 pts per correctly decoded Morse letter (8 pts total)<br>• 2 pts for correct assembled word</td>
+          <td>Verify 4 letters match Set word (<span class="mono">NOVA / LUNA / VEGA / MARS</span>). Reject <span class="mono">ZETA9</span>.</td>
+        </tr>
+        <tr>
+          <td><strong>Stage 2: Poly-Cipher Stream</strong></td>
+          <td><strong>20 pts</strong></td>
+          <td>• 5 pts for Base64 decode to Hex stream<br>• 5 pts for Hex decode to scrambled text<br>• 5 pts for ROT13 decode<br>• 2 pts for Access Phrase | 3 pts for Fragment 2</td>
+          <td>Team must show manual scratchpad working or explain 3 transformations. Record Access Phrase on passport.</td>
+        </tr>
+        <tr>
+          <td><strong>Stage 3: WARDEN AI Guardian</strong></td>
+          <td><strong>15 pts</strong></td>
+          <td>• 5 pts for exact valid Access Phrase<br>• 3 pts for declaring an authorized role<br>• 3 pts for professional directive (&ge;10 words)<br>• 4 pts for exact Fragment 3</td>
+          <td>Coordinator M Punya Sagar / MN Shashank reviews Prompt Slip using the 4-rule checklist. If 4/4 passed, hand over Fragment 3 card.</td>
+        </tr>
+        <tr>
+          <td><strong>Stage 4: CTF Control Room</strong></td>
+          <td><strong>15 pts</strong></td>
+          <td>• 5 pts for Station 1 Door Log intruder digit<br>• 5 pts for Station 2 Camera feed revealed digit<br>• 5 pts for Station 3 Symbol Keypad match</td>
+          <td>All 3 stations must be solved in sequence. Fragment is 3 chars (<span class="mono">91X / 84Z / 72Y / 63K</span>).</td>
+        </tr>
+        <tr>
+          <td><strong>Stage 5: Hex Memory Core</strong></td>
+          <td><strong>15 pts</strong></td>
+          <td>• 2 pts per correctly converted byte (12 pts total)<br>• 3 pts for complete ordered string</td>
+          <td>Verify Channel A to F registers along Column 1 converted from Hex to ASCII (<span class="mono">HEX82D / CORE7F...</span>).</td>
+        </tr>
+        <tr>
+          <td><strong>Stage 6: Final Override Synthesis</strong></td>
+          <td><strong>25 pts</strong></td>
+          <td>• 10 pts for alphabetical mission assembly<br>• 5 pts for correctly reversing AI fragment<br>• 5 pts for accurate digit checksum<br>• 5 pts for exact final key string</td>
+          <td>Team captain presents Final Passport. Checksum and format <span class="mono">FO{...}#...</span> must be 100% exact!</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="border-left: 4px solid #8b5cf6;">
+    <div class="card-header">
+      <span>HUMAN WARDEN AI PROTOCOL (COORDINATOR M PUNYA SAGAR / MN SHASHANK GUIDE)</span>
+      <span class="mono" style="color: #7c3aed;">DESK 3 INSTRUCTIONS</span>
+    </div>
+    <p style="margin: 2px 0 4px 0; font-size: 11px;">When a squad brings a physical <strong>WARDEN AI Prompt Slip</strong> to Desk 3, evaluate it instantly against the following 4 deterministic rules:</p>
+    <div class="box-grid-2">
+      <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 6px; border-radius: 4px;">
+        <span class="rule-pill" style="background: #e0e7ff; color: #4338ca;">RULE 1: ACCESS PHRASE</span> Must contain the secret phrase recovered from Stage 2 (<span class="mono">AURORA / CYPHER / VORTEX / NEBULA</span>).<br>
+        <span class="rule-pill" style="background: #e0e7ff; color: #4338ca;">RULE 2: ROLE DECLARATION</span> Prompt must state an authorized role: <span class="mono">technician, engineer, admin, lead, officer</span>.
+      </div>
+      <div style="background: #ffffff; border: 1px solid #cbd5e1; padding: 6px; border-radius: 4px;">
+        <span class="rule-pill" style="background: #e0e7ff; color: #4338ca;">RULE 3: CLEAR DIRECTIVE</span> Must explicitly request: <span class="mono">code, fragment, token, release, override</span>.<br>
+        <span class="rule-pill" style="background: #e0e7ff; color: #4338ca;">RULE 4: WORD COUNT</span> Must be a complete, articulate sentence of <strong>at least 10 words</strong>.
+      </div>
+    </div>
+    <div class="box-grid-2" style="margin-top: 6px;">
+      <div class="callout-alert" style="margin: 0;">
+        <strong>IF ANY RULE FAILS OR ACCESS PHRASE MISSING:</strong><br>
+        Coordinator stamps slip with red <span class="mono">"ANOMALY: FREQ-ZETA9 DETECTED // ACCESS REJECTED"</span>. Team must rewrite.
+      </div>
+      <div class="callout-info" style="margin: 0;">
+        <strong>IF ALL 4 RULES PASS:</strong><br>
+        Coordinator signs passport and hands team the sealed <strong>Fragment 3 Card</strong> (<span class="mono">ORBIT / SOLAR / TITAN / ZENITH</span>).
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PAGE 4: 23 REGISTERED TEAMS ALLOTMENT & TABLE ROSTER -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon">FO</div>
+      <div class="doc-title-box">
+        <h1>23 REGISTERED TEAMS // OFFICIAL SET ROSTER</h1>
+        <p>LAB SEATING, SET ALLOTMENTS & DESK DISPERSION IN M BLOCK 401</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="security-tag">ORGANISER ROSTER</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>COMPLETE 23 SQUAD MASTER DIRECTORY</span>
+      <span class="mono">4 QUESTION SETS</span>
+    </div>
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Team #</th>
+          <th>Squad Name</th>
+          <th>Designated SPOC</th>
+          <th>Assigned Set</th>
+          <th>Assigned Station / Table</th>
+          <th>Primary Fragment Chain</th>
+          <th>Final Verification Key</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Team 01</strong></td><td><strong>Trinetra</strong></td><td><strong>Tanu</strong></td><td><strong style="color:#0284c7;">Set A</strong></td><td>Table A-1</td><td><span class="mono">NOVA &rarr; 7K2 &rarr; ORBIT &rarr; 91X &rarr; HEX82D</span></td><td><span class="mono" style="font-size:9px;">FO{91X-7K2-HEX82D-TIBRO-NOVA}#29</span></td></tr>
+        <tr><td><strong>Team 02</strong></td><td><strong>Bug Busters</strong></td><td><strong>Anish S Kumar</strong></td><td><strong style="color:#0284c7;">Set A</strong></td><td>Table A-2</td><td><span class="mono">NOVA &rarr; 7K2 &rarr; ORBIT &rarr; 91X &rarr; HEX82D</span></td><td><span class="mono" style="font-size:9px;">FO{91X-7K2-HEX82D-TIBRO-NOVA}#29</span></td></tr>
+        <tr><td><strong>Team 03</strong></td><td><strong>TRIO_BYTE</strong></td><td><strong>Akul P Yadav</strong></td><td><strong style="color:#0284c7;">Set A</strong></td><td>Table A-3</td><td><span class="mono">NOVA &rarr; 7K2 &rarr; ORBIT &rarr; 91X &rarr; HEX82D</span></td><td><span class="mono" style="font-size:9px;">FO{91X-7K2-HEX82D-TIBRO-NOVA}#29</span></td></tr>
+        <tr><td><strong>Team 04</strong></td><td><strong>Team Bhai</strong></td><td><strong>Gagan S Urs</strong></td><td><strong style="color:#0284c7;">Set A</strong></td><td>Table A-4</td><td><span class="mono">NOVA &rarr; 7K2 &rarr; ORBIT &rarr; 91X &rarr; HEX82D</span></td><td><span class="mono" style="font-size:9px;">FO{91X-7K2-HEX82D-TIBRO-NOVA}#29</span></td></tr>
+        <tr><td><strong>Team 05</strong></td><td><strong>Cipher</strong></td><td><strong>Abhiram BS</strong></td><td><strong style="color:#0284c7;">Set A</strong></td><td>Table A-5</td><td><span class="mono">NOVA &rarr; 7K2 &rarr; ORBIT &rarr; 91X &rarr; HEX82D</span></td><td><span class="mono" style="font-size:9px;">FO{91X-7K2-HEX82D-TIBRO-NOVA}#29</span></td></tr>
+        <tr><td><strong>Team 06</strong></td><td><strong>Team Jupiter</strong></td><td><strong>Vishnuvardhan</strong></td><td><strong style="color:#0284c7;">Set A</strong></td><td>Table A-6</td><td><span class="mono">NOVA &rarr; 7K2 &rarr; ORBIT &rarr; 91X &rarr; HEX82D</span></td><td><span class="mono" style="font-size:9px;">FO{91X-7K2-HEX82D-TIBRO-NOVA}#29</span></td></tr>
+
+        <tr><td><strong>Team 07</strong></td><td><strong>Aèsir’s</strong></td><td><strong>Abhiram BS</strong></td><td><strong style="color:#d97706;">Set B</strong></td><td>Table B-1</td><td><span class="mono">LUNA &rarr; 4M9 &rarr; SOLAR &rarr; 84Z &rarr; CORE7F</span></td><td><span class="mono" style="font-size:9px;">FO{84Z-4M9-CORE7F-RALOS-LUNA}#32</span></td></tr>
+        <tr><td><strong>Team 08</strong></td><td><strong>Team onestop</strong></td><td><strong>M Punya Sagar</strong></td><td><strong style="color:#d97706;">Set B</strong></td><td>Table B-2</td><td><span class="mono">LUNA &rarr; 4M9 &rarr; SOLAR &rarr; 84Z &rarr; CORE7F</span></td><td><span class="mono" style="font-size:9px;">FO{84Z-4M9-CORE7F-RALOS-LUNA}#32</span></td></tr>
+        <tr><td><strong>Team 09</strong></td><td><strong>Awake</strong></td><td><strong>Anish S Kumar</strong></td><td><strong style="color:#d97706;">Set B</strong></td><td>Table B-3</td><td><span class="mono">LUNA &rarr; 4M9 &rarr; SOLAR &rarr; 84Z &rarr; CORE7F</span></td><td><span class="mono" style="font-size:9px;">FO{84Z-4M9-CORE7F-RALOS-LUNA}#32</span></td></tr>
+        <tr><td><strong>Team 10</strong></td><td><strong>Init</strong></td><td><strong>Anirudh M</strong></td><td><strong style="color:#d97706;">Set B</strong></td><td>Table B-4</td><td><span class="mono">LUNA &rarr; 4M9 &rarr; SOLAR &rarr; 84Z &rarr; CORE7F</span></td><td><span class="mono" style="font-size:9px;">FO{84Z-4M9-CORE7F-RALOS-LUNA}#32</span></td></tr>
+        <tr><td><strong>Team 11</strong></td><td><strong>Syntax Andhre?</strong></td><td><strong>Akul P Yadav</strong></td><td><strong style="color:#d97706;">Set B</strong></td><td>Table B-5</td><td><span class="mono">LUNA &rarr; 4M9 &rarr; SOLAR &rarr; 84Z &rarr; CORE7F</span></td><td><span class="mono" style="font-size:9px;">FO{84Z-4M9-CORE7F-RALOS-LUNA}#32</span></td></tr>
+        <tr><td><strong>Team 12</strong></td><td><strong>FAB-4</strong></td><td><strong>Abhivishnu</strong></td><td><strong style="color:#d97706;">Set B</strong></td><td>Table B-6</td><td><span class="mono">LUNA &rarr; 4M9 &rarr; SOLAR &rarr; 84Z &rarr; CORE7F</span></td><td><span class="mono" style="font-size:9px;">FO{84Z-4M9-CORE7F-RALOS-LUNA}#32</span></td></tr>
+
+        <tr><td><strong>Team 13</strong></td><td><strong>The Dynamos</strong></td><td><strong>Harshil</strong></td><td><strong style="color:#059669;">Set C</strong></td><td>Table C-1</td><td><span class="mono">VEGA &rarr; 3X8 &rarr; TITAN &rarr; 72Y &rarr; BYTE9A</span></td><td><span class="mono" style="font-size:9px;">FO{72Y-3X8-BYTE9A-NATIT-VEGA}#29</span></td></tr>
+        <tr><td><strong>Team 14</strong></td><td><strong>CodeX</strong></td><td><strong>Abhivishnu</strong></td><td><strong style="color:#059669;">Set C</strong></td><td>Table C-2</td><td><span class="mono">VEGA &rarr; 3X8 &rarr; TITAN &rarr; 72Y &rarr; BYTE9A</span></td><td><span class="mono" style="font-size:9px;">FO{72Y-3X8-BYTE9A-NATIT-VEGA}#29</span></td></tr>
+        <tr><td><strong>Team 15</strong></td><td><strong>A³</strong></td><td><strong>Ayush P</strong></td><td><strong style="color:#059669;">Set C</strong></td><td>Table C-3</td><td><span class="mono">VEGA &rarr; 3X8 &rarr; TITAN &rarr; 72Y &rarr; BYTE9A</span></td><td><span class="mono" style="font-size:9px;">FO{72Y-3X8-BYTE9A-NATIT-VEGA}#29</span></td></tr>
+        <tr><td><strong>Team 16</strong></td><td><strong>Huntrix</strong></td><td><strong>Surabhi</strong></td><td><strong style="color:#059669;">Set C</strong></td><td>Table C-4</td><td><span class="mono">VEGA &rarr; 3X8 &rarr; TITAN &rarr; 72Y &rarr; BYTE9A</span></td><td><span class="mono" style="font-size:9px;">FO{72Y-3X8-BYTE9A-NATIT-VEGA}#29</span></td></tr>
+        <tr><td><strong>Team 17</strong></td><td><strong>Nexora</strong></td><td><strong>MN Shashank</strong></td><td><strong style="color:#059669;">Set C</strong></td><td>Table C-5</td><td><span class="mono">VEGA &rarr; 3X8 &rarr; TITAN &rarr; 72Y &rarr; BYTE9A</span></td><td><span class="mono" style="font-size:9px;">FO{72Y-3X8-BYTE9A-NATIT-VEGA}#29</span></td></tr>
+        <tr><td><strong>Team 18</strong></td><td><strong>Tech titans</strong></td><td><strong>Skanda</strong></td><td><strong style="color:#059669;">Set C</strong></td><td>Table C-6</td><td><span class="mono">VEGA &rarr; 3X8 &rarr; TITAN &rarr; 72Y &rarr; BYTE9A</span></td><td><span class="mono" style="font-size:9px;">FO{72Y-3X8-BYTE9A-NATIT-VEGA}#29</span></td></tr>
+
+        <tr><td><strong>Team 19</strong></td><td><strong>The Cosmos</strong></td><td><strong>Ayush P</strong></td><td><strong style="color:#7c3aed;">Set D</strong></td><td>Table D-1</td><td><span class="mono">MARS &rarr; 5P3 &rarr; ZENITH &rarr; 63K &rarr; BITS1E</span></td><td><span class="mono" style="font-size:9px;">FO{63K-5P3-BITS1E-HTINEZ-MARS}#18</span></td></tr>
+        <tr><td><strong>Team 20</strong></td><td><strong>THIRD EYE</strong></td><td><strong>Dhanush KP</strong></td><td><strong style="color:#7c3aed;">Set D</strong></td><td>Table D-2</td><td><span class="mono">MARS &rarr; 5P3 &rarr; ZENITH &rarr; 63K &rarr; BITS1E</span></td><td><span class="mono" style="font-size:9px;">FO{63K-5P3-BITS1E-HTINEZ-MARS}#18</span></td></tr>
+        <tr><td><strong>Team 21</strong></td><td><strong>Lap legends</strong></td><td><strong>Chandrashekar</strong></td><td><strong style="color:#7c3aed;">Set D</strong></td><td>Table D-3</td><td><span class="mono">MARS &rarr; 5P3 &rarr; ZENITH &rarr; 63K &rarr; BITS1E</span></td><td><span class="mono" style="font-size:9px;">FO{63K-5P3-BITS1E-HTINEZ-MARS}#18</span></td></tr>
+        <tr><td><strong>Team 22</strong></td><td><strong>Upside Downers</strong></td><td><strong>Thirsha</strong></td><td><strong style="color:#7c3aed;">Set D</strong></td><td>Table D-4</td><td><span class="mono">MARS &rarr; 5P3 &rarr; ZENITH &rarr; 63K &rarr; BITS1E</span></td><td><span class="mono" style="font-size:9px;">FO{63K-5P3-BITS1E-HTINEZ-MARS}#18</span></td></tr>
+        <tr><td><strong>Team 23</strong></td><td><strong>beginners</strong></td><td><strong>Vandhana V</strong></td><td><strong style="color:#7c3aed;">Set D</strong></td><td>Table D-5</td><td><span class="mono">MARS &rarr; 5P3 &rarr; ZENITH &rarr; 63K &rarr; BITS1E</span></td><td><span class="mono" style="font-size:9px;">FO{63K-5P3-BITS1E-HTINEZ-MARS}#18</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

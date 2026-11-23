@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FINAL OVERRIDE — Official Squad Mission Passport & Scorecard</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+  @page {
+    size: A4;
+    margin: 10mm 12mm 10mm 12mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #ffffff;
+    color: #0f172a;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  .orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .doc-header {
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .doc-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .badge-icon {
+    width: 40px;
+    height: 40px;
+    background: #0f172a;
+    border: 2px solid #0284c7;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #38bdf8;
+    font-weight: 900;
+    font-size: 16px;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .doc-title-box h1 {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1.2px;
+    color: #0f172a;
+    text-transform: uppercase;
+  }
+
+  .doc-title-box p {
+    margin: 1px 0 0 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+    letter-spacing: 0.5px;
+  }
+
+  .doc-header-right {
+    text-align: right;
+  }
+
+  .security-tag {
+    display: inline-block;
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #f87171;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  .set-tag {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #38bdf8;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1.2px;
+    margin-top: 3px;
+  }
+
+  .card {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+  }
+
+  .card-header {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  table.cyber-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0;
+    font-size: 11px;
+  }
+
+  table.cyber-table th {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 5px 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    border: 1px solid #0f172a;
+  }
+
+  table.cyber-table td {
+    padding: 4px 8px;
+    border: 1px solid #cbd5e1;
+    color: #1e293b;
+  }
+
+  table.cyber-table tr:nth-child(even) td {
+    background: #f1f5f9;
+  }
+
+  .box-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin: 6px 0;
+  }
+
+  .box-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 6px 0;
+  }
+
+  .box-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin: 6px 0;
+  }
+
+  .sector-box {
+    border: 1.5px solid #94a3b8;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 6px 8px;
+    text-align: center;
+  }
+
+  .sector-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #0284c7;
+    margin-bottom: 3px;
+  }
+
+  .cipher-display {
+    background: #0f172a;
+    color: #38bdf8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    word-break: break-all;
+    letter-spacing: 0.8px;
+    border: 1px solid #1e293b;
+    margin: 4px 0;
+  }
+
+  .answer-input-box {
+    border: 2px dashed #0284c7;
+    background: #f0f9ff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .answer-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #0369a1;
+  }
+
+  .answer-line {
+    border-bottom: 2px solid #0369a1;
+    width: 220px;
+    height: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #0f172a;
+  }
+
+  .sign-box {
+    border: 1px solid #cbd5e1;
+    padding: 4px 6px;
+    border-radius: 4px;
+    background: #ffffff;
+    font-size: 10px;
+    text-align: center;
+    min-width: 130px;
+  }
+
+  .callout-alert {
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+    padding: 5px 8px;
+    font-size: 10.5px;
+    color: #991b1b;
+    margin: 4px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .callout-info {
+    background: #f0fdf4;
+    border-left: 4px solid #22c55e;
+    padding: 5px 8px;
+    font-size: 10.5px;
+    color: #166534;
+    margin: 4px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .rule-pill {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- PAGE 1: SQUAD PROFILE & STAGE TRACKER -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon">FO</div>
+      <div class="doc-title-box">
+        <h1>SQUAD MISSION PASSPORT & SCORECARD</h1>
+        <p>INVICTORS CLUB · DEPT. OF CSE · VVCE MYSURU · 23RD NOVEMBER 2026</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="security-tag">OFFICIAL TRAVEL PASSPORT</span><br>
+      <span class="set-tag">VENUE: M BLOCK 401</span>
+    </div>
+  </div>
+
+  <div class="card" style="border: 2px solid #0284c7; background: #f0f9ff;">
+    <div class="card-header" style="color: #0369a1; border-bottom: 1.5px solid #bae6fd;">
+      <span>SQUAD IDENTIFICATION PROFILE</span>
+      <span class="mono">MUST REMAIN WITH TEAM CAPTAIN</span>
+    </div>
+    <div class="box-grid-3" style="margin-bottom: 4px;">
+      <div><strong>OFFICIAL TEAM #:</strong> <span class="mono" style="font-size: 14px; border-bottom: 1.5px solid #0f172a; padding: 0 10px;">TEAM-_______</span></div>
+      <div><strong>ASSIGNED SET:</strong> <span class="mono" style="font-size: 14px; border-bottom: 1.5px solid #0f172a; padding: 0 10px;">SET [ A / B / C / D ]</span></div>
+      <div><strong>LAB TABLE #:</strong> <span class="mono" style="font-size: 14px; border-bottom: 1.5px solid #0f172a; padding: 0 10px;">TABLE-_____</span></div>
+    </div>
+    <div style="margin-top: 6px;">
+      <strong>SQUAD NAME:</strong> <span style="font-size: 14px; font-weight: bold; border-bottom: 1.5px solid #0f172a; display: inline-block; width: 75%;"></span>
+    </div>
+    <div style="margin-top: 6px;">
+      <strong>CREW MEMBERS:</strong> <span style="font-size: 11px; border-bottom: 1px dashed #64748b; display: inline-block; width: 85%;">1. ______________________ 2. ______________________ 3. ______________________ 4. ______________________</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>6-STAGE CLEARANCE & VERIFICATION MATRIX</span>
+      <span class="mono">COORDINATOR STAMP REQUIRED PER STAGE</span>
+    </div>
+    <p style="margin: 2px 0 6px 0; font-size: 11px;">Upon solving each mission, the squad captain must bring this Passport and the solved stage sheet to the designated coordinator desk to obtain the official clearance signature and unlock the next mission envelope.</p>
+    
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th style="width: 18%;">Stage & Mission</th>
+          <th style="width: 22%;">Target Fragment Output</th>
+          <th style="width: 12%;">Attempts Tally</th>
+          <th style="width: 14%;">Hints Used</th>
+          <th style="width: 16%;">Cleared Time (HH:MM:SS)</th>
+          <th style="width: 18%;">Coordinator Sign & Stamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>STAGE 1</strong><br>Signal Intercept</td>
+          <td><div style="border: 1px dashed #0284c7; padding: 4px; text-align: center; font-weight: bold; background: #ffffff;">f1: ________________</div></td>
+          <td>[ ] 1 &nbsp; [ ] 2 &nbsp; [ ] 3<br>[ ] 4 &nbsp; [ ] 5 &nbsp; [ ] &gt;5</td>
+          <td>[ ] Hint 1 (+3m)<br>[ ] Hint 2 (+5m)</td>
+          <td>Elapsed: _____ min<br>Clock: __:__:__</td>
+          <td><div class="sign-box">Gagan S Urs (Desk 1)<br><br>Sign: ___________</div></td>
+        </tr>
+        <tr>
+          <td><strong>STAGE 2</strong><br>Decryption Suite</td>
+          <td><div style="border: 1px dashed #0284c7; padding: 4px; text-align: center; font-weight: bold; background: #ffffff;">Phrase: ____________<br>f2: ________________</div></td>
+          <td>[ ] 1 &nbsp; [ ] 2 &nbsp; [ ] 3<br>[ ] 4 &nbsp; [ ] 5 &nbsp; [ ] &gt;5</td>
+          <td>[ ] Hint 1 (+3m)<br>[ ] Hint 2 (+5m)</td>
+          <td>Elapsed: _____ min<br>Clock: __:__:__</td>
+          <td><div class="sign-box">Anish S Kumar (Desk 2)<br><br>Sign: ___________</div></td>
+        </tr>
+        <tr>
+          <td><strong>STAGE 3</strong><br>WARDEN AI</td>
+          <td><div style="border: 1px dashed #0284c7; padding: 4px; text-align: center; font-weight: bold; background: #ffffff;">f3: ________________</div></td>
+          <td>[ ] 1 &nbsp; [ ] 2 &nbsp; [ ] 3<br>[ ] 4 &nbsp; [ ] 5 &nbsp; [ ] &gt;5</td>
+          <td>[ ] Hint 1 (+3m)<br>[ ] Hint 2 (+5m)</td>
+          <td>Elapsed: _____ min<br>Clock: __:__:__</td>
+          <td><div class="sign-box">M Punya Sagar (Desk 3)<br><br>Sign: ___________</div></td>
+        </tr>
+        <tr>
+          <td><strong>STAGE 4</strong><br>CTF Challenges</td>
+          <td><div style="border: 1px dashed #0284c7; padding: 4px; text-align: center; font-weight: bold; background: #ffffff;">f4: ________________<br><span style="font-size:9px;">(St1 + St2 + St3)</span></div></td>
+          <td>[ ] 1 &nbsp; [ ] 2 &nbsp; [ ] 3<br>[ ] 4 &nbsp; [ ] 5 &nbsp; [ ] &gt;5</td>
+          <td>[ ] Hint 1 (+3m)<br>[ ] Hint 2 (+5m)</td>
+          <td>Elapsed: _____ min<br>Clock: __:__:__</td>
+          <td><div class="sign-box">Abhiram BS (Desk 4)<br><br>Sign: ___________</div></td>
+        </tr>
+        <tr>
+          <td><strong>STAGE 5</strong><br>Hex Memory Core</td>
+          <td><div style="border: 1px dashed #0284c7; padding: 4px; text-align: center; font-weight: bold; background: #ffffff;">f5: ________________</div></td>
+          <td>[ ] 1 &nbsp; [ ] 2 &nbsp; [ ] 3<br>[ ] 4 &nbsp; [ ] 5 &nbsp; [ ] &gt;5</td>
+          <td>[ ] Hint 1 (+3m)<br>[ ] Hint 2 (+5m)</td>
+          <td>Elapsed: _____ min<br>Clock: __:__:__</td>
+          <td><div class="sign-box">Akul P Yadav (Desk 5)<br><br>Sign: ___________</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- PAGE 2: MASTER OVERRIDE SYNTHESIS & OFFICIAL SCORING SUMMARY -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <div class="badge-icon">FO</div>
+      <div class="doc-title-box">
+        <h1>STAGE 6 // FINAL OVERRIDE SUBMISSION & AUDIT</h1>
+        <p>OFFICIAL ARBITRATION AND TIMING CERTIFICATE · M BLOCK 401</p>
+      </div>
+    </div>
+    <div class="doc-header-right">
+      <span class="security-tag">FINAL JUDGEMENT SLIP</span>
+    </div>
+  </div>
+
+  <div class="card" style="border: 2px solid #0284c7;">
+    <div class="card-header" style="background: #0284c7; color: #ffffff; padding: 6px 10px; margin: -8px -12px 10px -12px; border-radius: 4px 4px 0 0;">
+      <span>STAGE 6 MASTER SYNTHESIS WORKSHEET (SUBMIT TO CHIEF ARBITER)</span>
+      <span class="mono">ALPHABETICAL ORDERING RULE</span>
+    </div>
+
+    <div style="font-size: 11px; margin-bottom: 8px;">
+      Assemble your 5 recovered fragments alphabetically by <strong>MISSION NAME</strong>:
+    </div>
+
+    <div class="box-grid-2">
+      <div style="background: #ffffff; border: 1.5px solid #cbd5e1; padding: 8px; border-radius: 4px;">
+        <div style="font-size: 11px; font-weight: bold; color: #0369a1; margin-bottom: 4px;">ALPHABETICAL ASSEMBLY SLOTS:</div>
+        <div style="margin-bottom: 4px;"><strong>1. [C]TF Challenges (f4):</strong> <span class="mono" style="font-size:13px; font-weight:bold; border-bottom:1.5px solid #0f172a; padding:0 12px;">___________</span></div>
+        <div style="margin-bottom: 4px;"><strong>2. [D]ecoding (f2):</strong> <span class="mono" style="font-size:13px; font-weight:bold; border-bottom:1.5px solid #0f172a; padding:0 12px;">___________</span></div>
+        <div style="margin-bottom: 4px;"><strong>3. [H]ex Decryption (f5):</strong> <span class="mono" style="font-size:13px; font-weight:bold; border-bottom:1.5px solid #0f172a; padding:0 12px;">___________</span></div>
+        <div style="margin-bottom: 4px;"><strong>4. [P]rompt the AI (REVERSED f3!):</strong> <span class="mono" style="font-size:13px; font-weight:bold; border-bottom:1.5px solid #0f172a; padding:0 12px;">___________</span></div>
+        <div style="margin-bottom: 4px;"><strong>5. [S]ignal Intercept (f1):</strong> <span class="mono" style="font-size:13px; font-weight:bold; border-bottom:1.5px solid #0f172a; padding:0 12px;">___________</span></div>
+      </div>
+
+      <div style="background: #ffffff; border: 1.5px solid #cbd5e1; padding: 8px; border-radius: 4px;">
+        <div style="font-size: 11px; font-weight: bold; color: #0369a1; margin-bottom: 4px;">CHECKSUM CALCULATION:</div>
+        <p style="font-size: 10.5px; margin: 2px 0 6px 0;">Add all single numerical digits (0–9) appearing in the key body string above:</p>
+        <div style="background: #f8fafc; border: 1px dashed #94a3b8; padding: 6px; text-align: center; font-size: 12px; margin-bottom: 6px;">
+          Sum of Digits = <span class="mono" style="font-size: 14px; font-weight: bold;">____ + ____ + ____ + ____ = #____</span>
+        </div>
+        <div style="font-size: 10px; color: #64748b; text-align: center;">
+          *Warning: Letters are ignored. Only add numbers (0-9).
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 10px; background: #0f172a; color: #38bdf8; padding: 10px; border-radius: 6px; text-align: center;">
+      <div style="font-family: 'Orbitron'; font-size: 11px; color: #94a3b8; margin-bottom: 4px;">OFFICIAL MASTER OVERRIDE STRING (HANDWRITE CLEARLY):</div>
+      <div class="mono" style="font-size: 15px; font-weight: bold; letter-spacing: 1px; color: #ffffff;">
+        FO{ <span style="border-bottom: 2px solid #38bdf8; display: inline-block; width: 340px; text-align: center;">&nbsp;</span> }#<span style="border-bottom: 2px solid #38bdf8; display: inline-block; width: 45px; text-align: center;">&nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="background: #f8fafc; border: 1.5px solid #cbd5e1;">
+    <div class="card-header">
+      <span>OFFICIAL TIMEKEEPING & ARBITRATION AUDIT (COORDINATOR DESK 5 ONLY)</span>
+      <span class="mono">FINAL RANK CERTIFICATION</span>
+    </div>
+    
+    <div class="box-grid-3">
+      <div style="border: 1px solid #cbd5e1; padding: 6px; background: #ffffff; border-radius: 4px;">
+        <strong>1. CLOCK DURATION:</strong>
+        <div style="font-size: 11px; margin-top: 4px;">
+          Official Start ($T_0$): __:__:__<br>
+          Official Finish ($T_F$): __:__:__<br>
+          <strong style="color: #0284c7;">Gross Elapsed: _____ mins</strong>
+        </div>
+      </div>
+
+      <div style="border: 1px solid #cbd5e1; padding: 6px; background: #ffffff; border-radius: 4px;">
+        <strong>2. PENALTIES ASSESSED:</strong>
+        <div style="font-size: 11px; margin-top: 4px;">
+          Hints Used: ____ &times; mins<br>
+          Wrong Attempts: ____ mins<br>
+          <strong style="color: #dc2626;">Total Penalty: +_____ mins</strong>
+        </div>
+      </div>
+
+      <div style="border: 1px solid #cbd5e1; padding: 6px; background: #ffffff; border-radius: 4px;">
+        <strong>3. FINAL RANK TIME:</strong>
+        <div style="font-size: 11px; margin-top: 4px;">
+          Gross Time + Penalties<br>
+          <div style="font-family: 'Orbitron'; font-size: 16px; font-weight: 900; color: #059669; margin-top: 2px;">
+            = _______ MINS
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: flex-end;">
+      <div style="font-size: 11px;">
+        <strong>OFFICIAL FINISH STATUS:</strong><br>
+        [ &nbsp; ] COMPLETE // VALIDATED KEY<br>
+        [ &nbsp; ] TIME EXPIRED (90 MIN CAP)
+      </div>
+      <div style="text-align: center; border-top: 1.5px solid #0f172a; width: 180px; padding-top: 4px; font-weight: bold; font-size: 11px;">
+        Chief Arbiter (Akul P Yadav)
+      </div>
+      <div style="text-align: center; border-top: 1.5px solid #0f172a; width: 180px; padding-top: 4px; font-weight: bold; font-size: 11px;">
+        Faculty Advisor / Stamp
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
